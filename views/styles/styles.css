@@ -1,0 +1,18 @@
+body {
+    background-color: lavenderblush;
+    color: darkgray;
+    width: 100%;
+    height: 100%;
+    /*font-family: 'Crimson Text', serif;*/
+}
+
+.panel-title {
+    height: 9em;
+    border-bottom: solid 1px darkgray;
+    margin: auto;
+
+}
+.panel-title h1{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 5em;
+}
