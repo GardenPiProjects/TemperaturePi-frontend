@@ -10,11 +10,13 @@ module.exports = {
     app.get('/data/:limit', (req, res) => {
       MongoClient.connect(process.env.MONGO_URL, function (err, db) {
         if (err) {
+          console.log(err);
           res.status(500).send({ error: 'something blew up' });
         }
         const collection = db.collection('data');
-        collection.find({}, { sort: { timestamp: -1 }, limit: req.params.limit }).toArray((err, docs) => {
+        collection.find({}, { sort: { timestamp: -1 }, limit: parseInt(req.params.limit) }).toArray((err, docs) => {
         if (err) {
+          console.log(err);
           res.status(500).send({ error: 'something blew up' });
         }
           res.json(docs);
