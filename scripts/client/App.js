@@ -13,7 +13,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-  request.get('/data/7')
+  request.get('/data/24')
       .end((err, res) => {
         const data = JSON.parse(res.text);
         this.setState({
