@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f837e2451cf6480c18fe"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f3e9a49c031fe02770ef"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20367,7 +20367,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/coffeebean/dev/irrigationPi-frontend/scripts/client/App.js',
+	  filename: '/Users/coffebean/dev/irrigationPi/frontend/scripts/client/App.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
@@ -20398,7 +20398,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 
-	      _superagent2.default.get('/data/7').end(function (err, res) {
+	      _superagent2.default.get('/data/24').end(function (err, res) {
 	        var data = JSON.parse(res.text);
 	        _this2.setState({
 	          data: data
@@ -27471,7 +27471,7 @@
 	};
 
 	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/coffeebean/dev/irrigationPi-frontend/scripts/client/charts.jsx',
+	  filename: '/Users/coffebean/dev/irrigationPi/frontend/scripts/client/charts.jsx',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
