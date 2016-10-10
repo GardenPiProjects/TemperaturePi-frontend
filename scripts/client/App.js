@@ -8,7 +8,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      url: '',
     }
   }
 
@@ -18,18 +19,26 @@ export default class App extends Component {
         const data = JSON.parse(res.text);
         this.setState({
           data,
+          url: data[0].url,
         });
       });
   }
 
+  handleChartClick(o) {
+    if(o.url) {
+      this.setState({
+        url: o.url,
+      });
+    }
+  }
+
   render() {
-    console.log(this.state.data)
     if(this.state.data.length > 0) {
       return (
         <div className="wrapper">
           <Title title="TemperaturePi"/>
-          <Image url={this.state.data[0].url}/>
-          <Chart data={_.sortBy(this.state.data, ['timestamp'])} />
+          <Image url={this.state.url}/>
+          <Chart data={_.sortBy(this.state.data, ['timestamp'])} handleChartClick={ o => this.handleChartClick(o)} />
         </div>
       );
     }

@@ -9,7 +9,8 @@ export default class Chart extends Component {
     const timestamp = [];
     this.props.data.forEach(doc => {
       temp.push(doc.temperature);
-      timestamp.push(moment(doc.timestamp).format('ddd, hA'));
+      const time = moment(doc.timestamp).format('ddd, hA')
+      timestamp.push(time);
     });
     this.setState({ temp });
     this.setState({ timestamp }, ()=>{
@@ -104,6 +105,7 @@ export default class Chart extends Component {
       }
     }}
   getChartDetails() {
+    let self = this;
     return {
       chart: {
         renderTo: 'highcharts',
@@ -120,7 +122,24 @@ export default class Chart extends Component {
         step: 'right',
         name: '˚C'
       }],
-    };
+      plotOptions: {
+        series: {
+          cursor: 'pointer',
+          point: {
+            events: {
+              click(e) {
+                const o = self.props.data.filter((obj) => {
+                  if(moment(obj.timestamp).format('ddd, hA') === e.point.category) {
+                  return obj;
+                }
+                });
+                self.props.handleChartClick(o[0]);
+              },
+            },
+          },
+        },
+      },
+      };
   }
 
 //Create the div which the chart will be rendered to.
