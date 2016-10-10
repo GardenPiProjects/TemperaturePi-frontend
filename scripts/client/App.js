@@ -10,6 +10,8 @@ export default class App extends Component {
     this.state = {
       data: [],
       url: '',
+      time:'',
+      temp:'',
     }
   }
 
@@ -20,6 +22,9 @@ export default class App extends Component {
         this.setState({
           data,
           url: data[0].url,
+          time: data[0].timestamp,
+          temp: data[0].temperature,
+
         });
       });
   }
@@ -28,6 +33,8 @@ export default class App extends Component {
     if(o.url) {
       this.setState({
         url: o.url,
+        time: o.timestamp,
+        temp: o.temperature
       });
     }
   }
@@ -36,8 +43,7 @@ export default class App extends Component {
     if(this.state.data.length > 0) {
       return (
         <div className="wrapper">
-          <Title title="TemperaturePi"/>
-          <Image url={this.state.url}/>
+          <Image url={this.state.url} temp={this.state.temp} time={this.state.time} />
           <Chart data={_.sortBy(this.state.data, ['timestamp'])} handleChartClick={ o => this.handleChartClick(o)} />
         </div>
       );

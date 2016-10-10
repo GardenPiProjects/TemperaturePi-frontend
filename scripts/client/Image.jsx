@@ -1,8 +1,12 @@
 import React, { PropTypes } from 'react';
-
-export default function Image({ url }){
-
-  return <img className="latest-pic" src={url} />
+import Temp from './Temp.jsx';
+export default function Image({ url, time, temp }){
+  return (
+    <div className="latest-pic">
+      <img src={url} />
+      <Temp temp={temp} time={time} />
+    </div>
+  );
 }
 
 Image.propTypes = {

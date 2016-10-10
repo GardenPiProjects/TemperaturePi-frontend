@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "62db15124f3533b73980"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "dcc909f037a4eeb0edf2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20328,11 +20328,11 @@
 
 	var _Image2 = _interopRequireDefault(_Image);
 
-	var _superagent = __webpack_require__(272);
+	var _superagent = __webpack_require__(273);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	var _lodash = __webpack_require__(277);
+	var _lodash = __webpack_require__(278);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -20354,7 +20354,9 @@
 
 	    _this.state = {
 	      data: [],
-	      url: ''
+	      url: '',
+	      time: '',
+	      temp: ''
 	    };
 	    return _this;
 	  }
@@ -20368,7 +20370,10 @@
 	        var data = JSON.parse(res.text);
 	        _this2.setState({
 	          data: data,
-	          url: data[0].url
+	          url: data[0].url,
+	          time: data[0].timestamp,
+	          temp: data[0].temperature
+
 	        });
 	      });
 	    }
@@ -20377,7 +20382,9 @@
 	    value: function handleChartClick(o) {
 	      if (o.url) {
 	        this.setState({
-	          url: o.url
+	          url: o.url,
+	          time: o.timestamp,
+	          temp: o.temperature
 	        });
 	      }
 	    }
@@ -20390,8 +20397,7 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'wrapper' },
-	          _react2.default.createElement(_title2.default, { title: 'TemperaturePi' }),
-	          _react2.default.createElement(_Image2.default, { url: this.state.url }),
+	          _react2.default.createElement(_Image2.default, { url: this.state.url, temp: this.state.temp, time: this.state.time }),
 	          _react2.default.createElement(_charts2.default, { data: _lodash2.default.sortBy(this.state.data, ['timestamp']), handleChartClick: function handleChartClick(o) {
 	              return _this3.handleChartClick(o);
 	            } })
@@ -35419,7 +35425,7 @@
 /* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -35430,13 +35436,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _Temp = __webpack_require__(272);
+
+	var _Temp2 = _interopRequireDefault(_Temp);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function Image(_ref) {
 	  var url = _ref.url;
+	  var time = _ref.time;
+	  var temp = _ref.temp;
 
-
-	  return _react2.default.createElement("img", { className: "latest-pic", src: url });
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'latest-pic' },
+	    _react2.default.createElement('img', { src: url }),
+	    _react2.default.createElement(_Temp2.default, { temp: temp, time: time })
+	  );
 	}
 
 	Image.propTypes = {
@@ -35445,6 +35461,43 @@
 
 /***/ },
 /* 272 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Temp;
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _moment = __webpack_require__(164);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function Temp(_ref) {
+	  var temp = _ref.temp;
+	  var time = _ref.time;
+
+	  return _react2.default.createElement(
+	    'p',
+	    { className: 'current-temp' },
+	    temp + ' ˚C @ ' + (0, _moment2.default)(time).format('ddd, hA')
+	  );
+	}
+
+	Temp.propTypes = {
+	  temp: _react.PropTypes.number.isRequired,
+	  time: _react.PropTypes.number.isRequired
+	};
+
+/***/ },
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35461,9 +35514,9 @@
 	  root = this;
 	}
 
-	var Emitter = __webpack_require__(273);
-	var requestBase = __webpack_require__(274);
-	var isObject = __webpack_require__(275);
+	var Emitter = __webpack_require__(274);
+	var requestBase = __webpack_require__(275);
+	var isObject = __webpack_require__(276);
 
 	/**
 	 * Noop.
@@ -35475,7 +35528,7 @@
 	 * Expose `request`.
 	 */
 
-	var request = module.exports = __webpack_require__(276).bind(null, Request);
+	var request = module.exports = __webpack_require__(277).bind(null, Request);
 
 	/**
 	 * Determine XHR.
@@ -36426,7 +36479,7 @@
 
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -36595,13 +36648,13 @@
 
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(275);
+	var isObject = __webpack_require__(276);
 
 	/**
 	 * Clear previous timeout.
@@ -36973,7 +37026,7 @@
 
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports) {
 
 	/**
@@ -36992,7 +37045,7 @@
 
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -37030,7 +37083,7 @@
 
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**

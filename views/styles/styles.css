@@ -78,9 +78,19 @@ body {
 }
 
 .latest-pic {
+    position: relative;
+}
+.latest-pic img {
     width: 100%;
-    border: 2px solid;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+}
+.current-temp {
+    font-family: 'Open Sans Condensed', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 10px;
+    color: #ffffff;
+    background-color: #000000;
+    font-size: 40px;
+    opacity: 0.5;
 }
