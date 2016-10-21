@@ -13,7 +13,7 @@ export default class ImageCarousel extends Component {
 
   image(url, temp, time) {
     return (
-      <div className="latest-pic">
+      <div key={time} className="latest-pic">
         <img src={url} alt="garden"/>
         <Temp temp={temp} time={time}/>
         <div className="swipe-left" onClick={()=> {

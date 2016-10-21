@@ -38,9 +38,11 @@
     "mongodb": "^2.2.10",
     "nodemon": "^1.10.2",
     "path": "^0.12.7",
-    "react": "^0.14.5",
+    "react": "^0.14.8",
     "react-dom": "^0.14.5",
-    "superagent": "^2.3.0"
+    "react-swipe": "^5.0.5",
+    "superagent": "^2.3.0",
+    "swipe-js-iso": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",

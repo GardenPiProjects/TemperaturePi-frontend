@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e5584399806b818e1938"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f28e35d9c08060beca71"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -35448,7 +35448,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'latest-pic' },
+	        { key: time, className: 'latest-pic' },
 	        _react2.default.createElement('img', { src: url, alt: 'garden' }),
 	        _react2.default.createElement(_Temp2.default, { temp: temp, time: time }),
 	        _react2.default.createElement('div', { className: 'swipe-left', onClick: function onClick() {
