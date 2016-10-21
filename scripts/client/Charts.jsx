@@ -1,5 +1,5 @@
 import Highcharts from 'highcharts';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 export default class Chart extends Component {
 // When the DOM is ready, create the chart.
@@ -120,7 +120,7 @@ export default class Chart extends Component {
       series: [{
         data: this.state.temp,
         step: 'right',
-        name: '˚C'
+        name: '˚C',
       }],
       plotOptions: {
         series: {
@@ -146,4 +146,9 @@ export default class Chart extends Component {
   render() {
     return <div id="highcharts"></div>;
   }
+}
+
+Chart.propTypes = {
+  data: PropTypes.array.isRequired,
+  handleChartClick: PropTypes.func.isRequired,
 }

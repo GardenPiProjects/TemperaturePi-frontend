@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Title from './title.jsx';
 import Chart from './charts.jsx';
-import Image from './Image.jsx';
+import ImageCarousel from './ImageCarousel.jsx';
 import request from 'superagent';
 import _ from 'lodash';
 export default class App extends Component {
@@ -24,7 +23,6 @@ export default class App extends Component {
           url: data[0].url,
           time: data[0].timestamp,
           temp: data[0].temperature,
-
         });
       });
   }
@@ -41,9 +39,10 @@ export default class App extends Component {
 
   render() {
     if(this.state.data.length > 0) {
+      //noinspection Eslint
       return (
         <div className="wrapper">
-          <Image url={this.state.url} temp={this.state.temp} time={this.state.time} />
+          <ImageCarousel data={this.state.data} />
           <Chart data={_.sortBy(this.state.data, ['timestamp'])} handleChartClick={ o => this.handleChartClick(o)} />
         </div>
       );
